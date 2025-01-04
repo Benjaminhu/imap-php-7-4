@@ -5,27 +5,26 @@ declare(strict_types=1);
 namespace Ddeboer\Imap;
 
 use Ddeboer\Imap\Exception\ReopenMailboxException;
-use IMAP\Connection;
 
 /**
  * An imap resource stream.
  */
 final class ImapResource implements ImapResourceInterface
 {
-    private Connection $resource;
+    private $resource;
     private ?MailboxInterface $mailbox;
     private static ?string $lastMailboxUsedCache = null;
 
     /**
      * Constructor.
      */
-    public function __construct(Connection $resource, ?MailboxInterface $mailbox = null)
+    public function __construct($resource, ?MailboxInterface $mailbox = null)
     {
         $this->resource = $resource;
         $this->mailbox  = $mailbox;
     }
 
-    public function getStream(): Connection
+    public function getStream()
     {
         $this->initMailbox();
 
@@ -64,7 +63,7 @@ final class ImapResource implements ImapResourceInterface
     /**
      * Check whether the current mailbox is open.
      */
-    private static function isMailboxOpen(MailboxInterface $mailbox, Connection $resource): bool
+    private static function isMailboxOpen(MailboxInterface $mailbox, $resource): bool
     {
         $currentMailboxName = $mailbox->getFullEncodedName();
         if ($currentMailboxName === self::$lastMailboxUsedCache) {
