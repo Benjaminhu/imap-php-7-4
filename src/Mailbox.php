@@ -114,7 +114,7 @@ final class Mailbox implements MailboxInterface
         return \imap_clearflag_full($this->resource->getStream(), $this->prepareMessageIds($numbers), $flag, \ST_UID);
     }
 
-    public function getMessages(?ConditionInterface $search = null, ?int $sortCriteria = null, bool $descending = false, ?string $charset = null): MessageIteratorInterface
+    public function getMessages(?ConditionInterface $search = null, ?int $sortCriteria = null, int $descending = 0, ?string $charset = null): MessageIteratorInterface
     {
         if (null === $search) {
             $search = new All();
