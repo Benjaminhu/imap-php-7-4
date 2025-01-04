@@ -33,18 +33,11 @@ final class Server implements ServerInterface
      * @param int     $options    Connection options
      * @param int     $retries    Retries number
      */
-    public function __construct(
-        string $hostname,
-        string $port = '993',
-        string $flags = '/imap/ssl/validate-cert',
-        array $parameters = [],
-        int $options = 0,
-        int $retries = 1,
-    ) {
+    public function __construct(string $hostname, string $port = '993', string $flags = '/imap/ssl/validate-cert', array $parameters = [], int $options = 0, int $retries = 1)
+    {
         if (!\function_exists('imap_open')) {
             throw new \RuntimeException('IMAP extension must be enabled');
         }
-
         $this->hostname   = $hostname;
         $this->port       = $port;
         $this->flags      = '' !== $flags ? '/' . \ltrim($flags, '/') : '';

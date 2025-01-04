@@ -1,5 +1,5 @@
 {
-    "name": "ddeboer/imap",
+    "name": "benjaminhu/imap-php-7-4",
     "description": "Object-oriented IMAP for PHP",
     "license": "MIT",
     "keywords": [
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": "~8.3.0 || ~8.4.0",
+        "php": "^7.4 || ~8.4.0",
         "ext-dom": "*",
         "ext-iconv": "*",
         "ext-imap": "*",
@@ -35,7 +35,8 @@
         "phpstan/phpstan": "^1.12.4",
         "phpstan/phpstan-phpunit": "^1.4.0",
         "phpstan/phpstan-strict-rules": "^1.6.1",
-        "phpunit/phpunit": "^11.3.6"
+        "phpunit/phpunit": "^11.3.6",
+        "rector/rector": "^1.2"
     },
     "autoload": {
         "psr-4": {

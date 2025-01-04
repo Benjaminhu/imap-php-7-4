@@ -56,7 +56,10 @@ abstract class AbstractPart implements PartInterface
     private ?string $encoding    = null;
     private ?string $disposition = null;
     private ?string $description = null;
-    private string|int|null $bytes;
+    /**
+     * @var int|string|null
+     */
+    private $bytes;
     private ?string $lines          = null;
     private ?string $content        = null;
     private ?string $decodedContent = null;
@@ -70,12 +73,8 @@ abstract class AbstractPart implements PartInterface
      * @param string                $partNumber    Part number
      * @param \stdClass             $structure     Part structure
      */
-    public function __construct(
-        ImapResourceInterface $resource,
-        int $messageNumber,
-        string $partNumber,
-        \stdClass $structure,
-    ) {
+    public function __construct(ImapResourceInterface $resource, int $messageNumber, string $partNumber, \stdClass $structure)
+    {
         $this->resource      = $resource;
         $this->messageNumber = $messageNumber;
         $this->partNumber    = $partNumber;
